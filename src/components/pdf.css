@@ -1,0 +1,50 @@
+.page {
+    padding-top: 35px;
+    padding-bottom: 65px;
+    
+    background-image: 'url("images/backgroundPDF.jpg")'
+}
+.section {
+    margin: 10px;
+    padding: 10px;
+    flex-grow: 1px;
+}
+.title {
+    font-size: 24;
+    text-align: 'center';
+    font-family: 'Times-Roman';
+}
+.header {
+    font-size: 12;
+    margin-bottom: 20px;
+    text-align: 'center';
+    color: 'grey';
+}
+Text.subtitle {
+    font-size: 14;
+    margin: 10px;
+    text-decoration: 'underline';
+    text-shadow: 4;
+    font-weight: 'bold';
+    font-style: 'italic';
+    background-color: '#cccccc';
+}
+.text{
+    margin: 10;
+    font-size: 12;
+    text-align: 'justify';
+    font-family: 'Times-Roman';
+    line-height: 0.6;
+}
+.pageNumber{
+    position: 'absolute';
+    font-size: 12;
+    bottom: 30;
+    left: 0;
+    right: 0;
+    text-align: 'center';
+    color: 'grey';
+}
+.viewParams{
+    line-height: '0,7';
+}
