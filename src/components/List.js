@@ -56,8 +56,6 @@ class InteractiveList extends React.Component {
     }
 
     handleDelete(val) {
-        console.log(val);
-        
         axios.delete("http://localhost:8081/deleteTemplate?tempID=" + val.id)
             .then(res => {
                 console.log(res);

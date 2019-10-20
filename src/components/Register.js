@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import axios from 'axios';
 import MenuAppBar from './MenuAppBar'; 
 import Recaptcha from 'react-recaptcha';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withAlert } from 'react-alert';
+import { register } from '../components/util/APIUtils';
 
 class Register extends Component {
     
@@ -54,24 +53,22 @@ class Register extends Component {
           'Content-Type': 'application/json;charset=UTF-8'
       }
   }
-  var data = {
+  var registerRequest = {
     "username": this.state.username,
     "password": this.state.password
   }
-  axios.post('http://localhost:8081/register', data, headers)
 
-      .then((res) => {
-          const newUser = res.data;
-          this.props.alert.success(<div style={{ color: 'white' }}>Registration completed successfully!</div>);
-          this.setState({newUser}, this.goToHomePage);
-          
-          console.log("RESPONSE RECEIVED: ", res);
-      })
-      .catch((err) => {
-        // this.props.alert.success(<div style={{ color: 'white' }}>Registration error!</div>);
-          console.log("AXIOS ERROR: ", err);
-          this.props.alert.error(<div style={{ color: 'white' }}>Your registration attempt was unsuccessful! User with that username already exists!</div>);
-      })
+  register(registerRequest)
+            .then(response => {
+              const newUser = response;
+              this.props.alert.success(<div style={{ color: 'white' }}>Registration completed successfully!</div>);
+              this.setState({newUser}, this.goToHomePage);
+            }).catch(error => {
+              if(error.status ===400){
+                this.props.alert.error(<div style={{ color: 'white' }}>{error.message}</div>);
+              } 
+              else this.props.alert.error(<div style={{ color: 'white' }}>Your registration attempt was unsuccessful!</div>);
+            });
   }
 
   goToHomePage(){

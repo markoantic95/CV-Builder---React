@@ -138,7 +138,6 @@ class UpdateTemplate extends Component {
     }
 
     handleSave() {
-        console.log("aaaaaaaaaaaaaaa");
         let tempSectionsForUpdate = [];
         let sectionsForUpdate = [];
         var sectionsForDelete = [];
@@ -148,7 +147,6 @@ class UpdateTemplate extends Component {
         for (var i = 0; i < this.state.initalSections.length; i++) {
             initalSectionsCompare.push(this.state.initalSections[i].idSection);
             inserted = false;
-            console.log("kkk");
             for (var j = 0; j < this.state.selectedSections.length; j++) {
                 if (this.state.initalSections[i].idSection.id === this.state.selectedSections[j].id) {
                     tempSectionsForUpdate.push(this.state.initalSections[i]);
@@ -161,7 +159,6 @@ class UpdateTemplate extends Component {
                 sectionsForDelete.push(this.state.initalSections[i]);
             }
         }
-        console.log("qaaaaaaaaaaaaaaa");
         if (sectionsForUpdate.length === 0) {
             sectionsForPost = this.state.selectedSections;
         }
@@ -200,7 +197,6 @@ class UpdateTemplate extends Component {
             for (var i = 0; i < sectionsForPost.length; i++) {
                 let indeks=i;
                 let indeks1 = this.state.selectedSections.findIndex(x=>x.id===sectionsForPost[i].id);
-                console.log("redosled" + indeks1 + "sekcija:" + sectionsForPost[indeks].name);
                 let dataPost = {
                     "sectionOrder": indeks1+1,
                     "numberOfAppearances": 1,
@@ -231,7 +227,6 @@ class UpdateTemplate extends Component {
             for (var i = 0; i < tempSectionsForUpdate.length; i++) {
                 let indeks = i;
                 let indeks1 = this.state.selectedSections.findIndex(x=>x.id===tempSectionsForUpdate[i].idSection.id);
-                console.log("redosled" + indeks1 + "sekcija:" + sectionsForUpdate[indeks].name);
                 let dataUpdate = {
                     "id":tempSectionsForUpdate[i].id,
                     "sectionOrder": indeks1+1,

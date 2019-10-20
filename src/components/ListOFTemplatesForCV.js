@@ -37,7 +37,6 @@ class ListOFTemplatesForCV extends Component {
     
 
     render() {
-        console.log("BBB"+this.state.userTemplates[0]);
         if(this.state.loaded===1){
         return(
             <div>

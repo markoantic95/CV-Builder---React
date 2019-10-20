@@ -9,9 +9,7 @@ import UpdateTemplate from './components/UpdateTemplate'
 import PreviewTemplate from './components/PreviewTemplate'
 import { Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
-import logo from './logo.svg';
 import './App.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ListOFTemplatesForCV from './components/ListOFTemplatesForCV';
 import CreateACV from './components/CreateACV';
 import SearchCVs from './components/SearchCVs';
@@ -32,16 +30,9 @@ static defaultProps = {
 }
   render() {
     return (
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <h1 className="App-title">Welcome to React</h1>
-      //   </header>
-      
         <AlertProvider template={AlertTemplate} {...options}>
                 <Router>
                     <div>
-                    {/* <MuiThemeProvider> */}
                         <Route exact path="/" component={Login}/>
                         <Route path="/register" component={Register}/>
                         <Route path="/home" component={Home}/>
@@ -53,11 +44,9 @@ static defaultProps = {
                         <Route path="/createACv" component={CreateACV}/>
                         <Route path="/searchCVs" component={SearchCVs}/>
                         <Route path="/viewCV" component={PreviewCV}/>
-                        {/* </MuiThemeProvider> */}
                     </div>
                 </Router>
             </AlertProvider>
-      // </div>
     );
   }
 }

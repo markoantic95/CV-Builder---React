@@ -63,7 +63,6 @@ class ComboBox extends React.Component {
 
     handleChange = (selectedOption) => {
         for (var i = 0; i < selectedOption.length; i++) {
-            // console.log("Selected"+selectedOption[i].label)
         }
         // this.setState({ selectedOption },()=>this.sendSections());
         // this.props.initalValues=selectedOption;
@@ -79,7 +78,6 @@ class ComboBox extends React.Component {
         
         const selectedOption= this.props.initalValues;
         if(selectedOption!=null){
-            console.log("Selecteeeed"+selectedOption[0].label); 
         }
         const options = [];
         if (this.props.sections.length != 0) {

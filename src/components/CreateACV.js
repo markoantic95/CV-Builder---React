@@ -154,7 +154,6 @@ class CreateACV extends Component {
                         // dateValue = new Date(dateStringValue);
                         // dateValue = this.state.paramWithParamValues[indeks].value;
                         dateValue = new Date();
-                        console.log(dateValue);
                         break;
                     case "java.lang.Integer":
                         intValue = this.state.paramWithParamValues[indeks].value;
@@ -264,7 +263,6 @@ class CreateACV extends Component {
     handleCancel() {
         axios.delete("http://localhost:8081/deleteCV?cvID=" + this.cvID)
             .then(res => {
-                console.log(res);
                 console.log(res.data);
                 this.props.history.push({
                     pathname: '/home'

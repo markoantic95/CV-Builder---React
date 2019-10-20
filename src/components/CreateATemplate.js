@@ -138,7 +138,6 @@ class CreateATemplatePage extends Component {
 
 
     handleSave() {
-        console.log(this.state.newTemplate.id)
         var headers = {
             'headers': {
                 'Content-Type': 'application/json;charset=UTF-8'

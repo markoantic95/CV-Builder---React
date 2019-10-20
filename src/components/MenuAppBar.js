@@ -7,9 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
@@ -37,13 +34,8 @@ class MenuAppBar extends React.Component {
         title:''
     }
   state = {
-    // auth: true,
     anchorEl: null
   };
-
-//   handleChange = event => {
-//     this.setState({ auth: event.target.checked });
-//   };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -68,17 +60,8 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        {/* <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup> */}
         <AppBar position="static" style={{ backgroundColor: '#2196F3' }} >
           <Toolbar>
-          {/* <img src="https://www.livingstonintl.com/livingston-content/themes/livingston2015/lob/svg/home/icon-small-business-services.svg"/> */}
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
