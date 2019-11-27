@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Page, Text, View, Document, StyleSheet, Image, Link, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image, Link, Font, PDFViewer } from '@react-pdf/renderer';
 import axios from 'axios'
 import MenuAppBar from "./MenuAppBar";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -200,42 +200,44 @@ class PreviewCV extends Component {
         });
 
         const MyDocument = () => (
-            <Document key={this.state.key} title={this.state.titleT} width="90%" height="520px" style={{ position: 'left' }} >
-                <Page wrap style={stylesPDF.page}>
-                    {/* <View style={stylesPDF.section}> */}
-                    {/* <Text style={stylesPDF.header} fixed>-Created by Marko Antic-</Text> */}
-                    <Image style={stylesPDF.header} src='images/logo.jpg'></Image>
-                    <Text style={stylesPDF.title}></Text>
-                    {/* {this.state.sectionsWithParamsArray.map(val=>{
-                        <Text style={stylesPDF.subtitle}>{val.sectionName.name}</Text>
-                    })} */}
+            <PDFViewer width="90%" height="600px">
+                <Document key={this.state.key} title={this.state.titleT} width="90%" height="520px" style={{ position: 'left' }} >
+                    <Page wrap style={stylesPDF.page}>
+                        {/* <View style={stylesPDF.section}> */}
+                        {/* <Text style={stylesPDF.header} fixed>-Created by Marko Antic-</Text> */}
+                        <Image style={stylesPDF.header} src='images/logo.jpg'></Image>
+                        <Text style={stylesPDF.title}></Text>
+                        {/* {this.state.sectionsWithParamsArray.map(val=>{
+                            <Text style={stylesPDF.subtitle}>{val.sectionName.name}</Text>
+                        })} */}
 
-                    {this.state.sectionsWithParamsArray.length > 0 &&
-                        <View>
-                            {this.state.sectionsWithParamsArray.map((sect, i) =>
-                                <View>
-                                    <Text key={i} style={stylesPDF.subtitle}>{sect.sectionName.name}</Text>
-                                    {/* this.state.paramsOnly[findWithAttr(this.state.paramsOnly,'id',this.state.sectionsWithParamsArray[i].params[j].id)]){ */}
-                                    {this.state.sectionsWithParamsArray[i].params.map((par, j) =>
-                                        this.state.cvDetails.length!=0 && this.state.paramsOnly[findWithAttr(this.state.paramsOnly,'id',par.id)] &&
-                                        <Text key={j} style={stylesPDF.text}>{par.name}:{this.returnNotNullValue(par)} </Text>
+                        {this.state.sectionsWithParamsArray.length > 0 &&
+                            <View>
+                                {this.state.sectionsWithParamsArray.map((sect, i) =>
+                                    <View>
+                                        <Text key={i} style={stylesPDF.subtitle}>{sect.sectionName.name}</Text>
+                                        {/* this.state.paramsOnly[findWithAttr(this.state.paramsOnly,'id',this.state.sectionsWithParamsArray[i].params[j].id)]){ */}
+                                        {this.state.sectionsWithParamsArray[i].params.map((par, j) =>
+                                            this.state.cvDetails.length!=0 && this.state.paramsOnly[findWithAttr(this.state.paramsOnly,'id',par.id)] &&
+                                            <Text key={j} style={stylesPDF.text}>{par.name}:{this.returnNotNullValue(par)} </Text>
 
-                                    )}
-                                </View>
-                            )}
-                        </View>
-                    }
-                    <Text style={stylesPDF.pageNumber} render={({ pageNumber, totalPages }) => (
-                        `${pageNumber} / ${totalPages}`
-                    )} fixed />
-                    {/* <Image src='images/template.png'></Image> */}
+                                        )}
+                                    </View>
+                                )}
+                            </View>
+                        }
+                        <Text style={stylesPDF.pageNumber} render={({ pageNumber, totalPages }) => (
+                            `${pageNumber} / ${totalPages}`
+                        )} fixed />
+                        {/* <Image src='images/template.png'></Image> */}
 
-                    {/* </View> */}
-                    {/* <View style={stylesPDF.section}>
-                        <Text>{this.state.section}</Text>
-                    </View> */}
-                </Page>
-            </Document>
+                        {/* </View> */}
+                        {/* <View style={stylesPDF.section}>
+                            <Text>{this.state.section}</Text>
+                        </View> */}
+                    </Page>
+                </Document>
+            </PDFViewer>
         );
 
         return (

@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
-import { Page, Text, View, Document, StyleSheet, Image, Link, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image, Link, Font,PDFViewer } from '@react-pdf/renderer';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { withAlert } from 'react-alert';
@@ -383,46 +383,48 @@ class CreateACV extends Component {
         });
 
         const MyDocument = () => (
-            <Document key={this.state.key} title={this.state.titleT} width="90%" height="520px" style={{ position: 'left' }} >
-                <Page wrap style={stylesPDF.page}>
-                    {/* <View style={stylesPDF.section}> */}
-                    {/* <Text style={stylesPDF.header} fixed>-Created by Marko Antic-</Text> */}
-                    <Image style={stylesPDF.header} src='images/logo.jpg'></Image>
-                    <Text style={stylesPDF.title}></Text>
-                    {/* {this.state.sectionsWithParamsArray.map(val=>{
-                        <Text style={stylesPDF.subtitle}>{val.sectionName.name}</Text>
-                    })} */}
+            <PDFViewer width="90%" height="600px">
+                <Document key={this.state.key} title={this.state.titleT} width="90%" height="520px" style={{ position: 'left' }} >
+                    <Page wrap style={stylesPDF.page}>
+                        {/* <View style={stylesPDF.section}> */}
+                        {/* <Text style={stylesPDF.header} fixed>-Created by Marko Antic-</Text> */}
+                        <Image style={stylesPDF.header} src='images/logo.jpg'></Image>
+                        <Text style={stylesPDF.title}></Text>
+                        {/* {this.state.sectionsWithParamsArray.map(val=>{
+                            <Text style={stylesPDF.subtitle}>{val.sectionName.name}</Text>
+                        })} */}
 
-                    {this.state.sectionsWithParamsArray.length > 0 &&
-                        <View>
-                            {this.state.sectionsWithParamsArray.map((sect, i) =>
-                                <View>
-                                    <Text key={i} style={stylesPDF.subtitle}>{sect.sectionName.name}</Text>
+                        {this.state.sectionsWithParamsArray.length > 0 &&
+                            <View>
+                                {this.state.sectionsWithParamsArray.map((sect, i) =>
+                                    <View>
+                                        <Text key={i} style={stylesPDF.subtitle}>{sect.sectionName.name}</Text>
 
-                                    {this.state.sectionsWithParamsArray[i].params.map((par, j) =>
-                                        this.state.paramWithParamValues.length != 0 && this.state.paramsOnly.includes(par) ? (
-                                            <Text key={j} style={stylesPDF.text}>{par.name} : {this.state.paramWithParamValues[findWithAttr(this.state.paramWithParamValues, 'param', par)].value}</Text>
-                                        ) : (
-                                                <Text key={j} style={stylesPDF.text}>{par.name}</Text>
-                                            )
-                                    )}
-                                </View>
-                            )}
+                                        {this.state.sectionsWithParamsArray[i].params.map((par, j) =>
+                                            this.state.paramWithParamValues.length != 0 && this.state.paramsOnly.includes(par) ? (
+                                                <Text key={j} style={stylesPDF.text}>{par.name} : {this.state.paramWithParamValues[findWithAttr(this.state.paramWithParamValues, 'param', par)].value}</Text>
+                                            ) : (
+                                                    <Text key={j} style={stylesPDF.text}>{par.name}</Text>
+                                                )
+                                        )}
+                                    </View>
+                                )}
 
-                        </View>
+                            </View>
 
-                    }
-                    <Text style={stylesPDF.pageNumber} render={({ pageNumber, totalPages }) => (
-                        `${pageNumber} / ${totalPages}`
-                    )} fixed />
-                    {/* <Image src='images/template.png'></Image> */}
+                        }
+                        <Text style={stylesPDF.pageNumber} render={({ pageNumber, totalPages }) => (
+                            `${pageNumber} / ${totalPages}`
+                        )} fixed />
+                        {/* <Image src='images/template.png'></Image> */}
 
-                    {/* </View> */}
-                    {/* <View style={stylesPDF.section}>
-                        <Text>{this.state.section}</Text>
-                    </View> */}
-                </Page>
-            </Document>
+                        {/* </View> */}
+                        {/* <View style={stylesPDF.section}>
+                            <Text>{this.state.section}</Text>
+                        </View> */}
+                    </Page>
+                </Document>
+            </PDFViewer>
         );
 
         if (this.state.loaded === 1) {
